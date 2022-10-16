@@ -1,4 +1,4 @@
-# Asynchronous Sockets for C++
+# Asynchronous Sockets for Windows
 Simple, multithread-based(not thread safe), non-blocking asynchronous Client-Server classes in C++ for TCP & UDP. 
 Creates a thread for every connection. Use `mutex`es or `atomic` variables to provide thread-safe functions.
 
@@ -30,5 +30,4 @@ You can compile all the examples by just going in the `examples/` directory and 
 - [examples/udp-server.cpp](https://github.com/eminfedar/async-sockets-cpp/blob/master/examples/udp-server.cpp)
   
 ## Supported Platforms:
-- Linux
-- MacOS (not tested)
+- Windows
