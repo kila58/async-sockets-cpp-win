@@ -38,7 +38,7 @@ public:
         int status;
         if ((status = getaddrinfo(host.c_str(), NULL, &hints, &res)) != 0)
         {
-            onError(errno, "Invalid address." + std::string(gai_strerror(status)));
+            onError(errno, "Invalid address." + std::string(gai_strerrorA(status)));
             return;
         }
 
@@ -109,7 +109,7 @@ public:
         int status;
         if ((status = getaddrinfo(host.c_str(), NULL, &hints, &res)) != 0)
         {
-            onError(errno, "Invalid address." + std::string(gai_strerror(status)));
+            onError(errno, "Invalid address." + std::string(gai_strerrorA(status)));
             return;
         }
 
@@ -130,7 +130,8 @@ public:
 private:
     static void Receive(UDPSocket *udpSocket)
     {
-        char tempBuffer[udpSocket->BUFFER_SIZE];
+        char tempBuffer[0xFFFF];
+        //char tempBuffer[udpSocket->BUFFER_SIZE];
 
         while (true)
         {
@@ -158,7 +159,8 @@ private:
         sockaddr_in hostAddr;
         socklen_t hostAddrSize = sizeof(hostAddr);
 
-        char tempBuffer[udpSocket->BUFFER_SIZE];
+        char tempBuffer[0xFFFF];
+        //char tempBuffer[udpSocket->BUFFER_SIZE];
 
         while (true)
         {
