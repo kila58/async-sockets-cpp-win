@@ -1,4 +1,6 @@
 # Asynchronous Sockets for Windows
+Quick port of https://github.com/eminfedar/async-sockets-cpp to Windows.
+
 Simple, multithread-based(not thread safe), non-blocking asynchronous Client-Server classes in C++ for TCP & UDP. 
 Creates a thread for every connection. Use `mutex`es or `atomic` variables to provide thread-safe functions.
 
