@@ -17,7 +17,7 @@ public:
         this->address.sin_family = AF_INET;
         this->address.sin_port = htons(port);
 
-        if (bind(this->sock, (const sockaddr *)&this->address, sizeof(this->address)) < 0)
+        if (bind(this->sock, (const sockaddr *)&this->address, sizeof(this->address)) != 0)
         {
             onError(errno, "Cannot bind the socket.");
             return;
@@ -31,8 +31,8 @@ public:
 
     void setBroadcast(FDR_ON_ERROR)
     {
-        int broadcast = 1;
-        if (setsockopt(this->sock, SOL_SOCKET, SO_BROADCAST, &broadcast, sizeof broadcast))
+        const bool broadcast = true;
+        if (setsockopt(this->sock, SOL_SOCKET, SO_BROADCAST, (char*)&broadcast, sizeof broadcast))
         {
             onError(errno, "setsockopt(SO_BROADCAST) failed.");
             return;
